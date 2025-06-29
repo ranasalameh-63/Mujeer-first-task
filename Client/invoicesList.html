@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Invoices List</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-gradient: linear-gradient(135deg, #2d1b69 0%, #11052c 100%);
+      --primary-color: #2d1b69;
+      --secondary-color: #11052c;
+      --success-color: #16a34a;
+      --warning-color: #f59e0b;
+      --danger-color: #dc2626;
+      --light-bg: #f8f9fa;
+      --card-bg: #ffffff;
+      --border-radius: 16px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--light-bg);
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .mobile-container {
+      max-width: 400px !important;
+      margin: 20px auto;
+      background: white;
+      min-height: calc(100vh - 40px);
+      border-radius: var(--border-radius);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .header {
+      background: var(--primary-gradient);
+      padding: 25px;
+      position: relative;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.03"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      pointer-events: none;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .status-indicator {
+      width: 12px;
+      height: 12px;
+      background: #fbbf24;
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.3);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .page-title {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0;
+      text-align: center;
+      flex-grow: 1;
+    }
+
+    .menu-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      border-radius: 12px;
+      padding: 8px 12px;
+      color: white;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .menu-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-1px);
+    }
+
+    .dropdown-menu {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      padding: 8px;
+      margin-top: 8px;
+    }
+
+    .dropdown-item {
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .dropdown-item:hover {
+      background: rgba(45, 27, 105, 0.1);
+      color: var(--primary-color);
+      transform: translateX(4px);
+    }
+
+    .content-area {
+      padding: 24px 20px;
+      background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+    }
+
+    .stats-summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .stat-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .stat-number {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: #6b7280;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .paid-stat { color: var(--success-color); }
+    .pending-stat { color: var(--warning-color); }
+    .cancelled-stat { color: var(--danger-color); }
+
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .invoice-card {
+        position: relative;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 15px;
+      margin-bottom: 5px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.05);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .invoice-status {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+}
+
+    .invoice-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: #e5e7eb;
+      transition: all 0.3s ease;
+    }
+
+    .invoice-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+
+    .invoice-card.paid::before { background: var(--success-color); }
+    .invoice-card.pending::before { background: var(--warning-color); }
+    .invoice-card.cancelled::before { background: var(--danger-color); }
+
+    .invoice-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .client-name {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #111827;
+      margin-bottom: 4px;
+    }
+
+    .invoice-date {
+      font-size: 0.85rem;
+      color: #6b7280;
+      font-weight: 500;
+    }
+
+    .invoice-details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .invoice-number {
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      color: #6b7280;
+      font-weight: 500;
+    }
+
+    .invoice-amount {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .invoice-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .status-paid {
+      background: rgba(22, 163, 74, 0.1);
+      color: var(--success-color);
+      border: 1px solid rgba(22, 163, 74, 0.2);
+    }
+
+    .status-pending {
+      background: rgba(245, 158, 11, 0.1);
+      color: var(--warning-color);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+    }
+
+    .status-cancelled {
+      background: rgba(220, 38, 38, 0.1);
+      color: var(--danger-color);
+      border: 1px solid rgba(220, 38, 38, 0.2);
+    }
+
+    .status-icon {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .status-paid .status-icon { background: var(--success-color); }
+    .status-pending .status-icon { background: var(--warning-color); }
+    .status-cancelled .status-icon { background: var(--danger-color); }
+
+    .empty-state {
+      text-align: center;
+      padding: 40px 20px;
+      color: #6b7280;
+    }
+
+    .scroll-indicator {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 4px;
+      height: 40px;
+      background: rgba(45, 27, 105, 0.1);
+      border-radius: 2px;
+      z-index: 1000;
+    }
+
+    .scroll-progress {
+      width: 100%;
+      background: var(--primary-gradient);
+      border-radius: 2px;
+      transition: height 0.1s ease;
+    }
+
+    @media (max-width: 480px) {
+      .mobile-container {
+        margin: 0;
+        border-radius: 0;
+        min-height: 100vh;
+      }
+      
+      .stats-summary {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      
+      .stat-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="mobile-container">
+    <!-- Header -->
+    <div class="header">
+      <div class="header-content d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center">
+            <div class="bg-warning rounded-circle me-2" style="width: 12px; height: 12px;"></div>
+        </div>      
+          <h1 class="page-title">Invoices</h1>
+        
+        <!-- Dropdown menu -->
+        <div class="dropdown">
+          <button class="menu-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-list fs-5"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="/Client/invoicesList.html"><i class="bi bi-list-ul me-2"></i>Invoices List</a></li>
+            <li><a class="dropdown-item" href="/Client/addVoucher.html"><i class="bi bi-plus-circle me-2"></i>Create New Invoice</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content-area">
+      <!-- Stats Summary -->
+      <div class="stats-summary">
+        <div class="stat-card">
+          <div class="stat-number paid-stat">5</div>
+          <div class="stat-label">Paid</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number pending-stat">3</div>
+          <div class="stat-label">Pending</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number cancelled-stat">2</div>
+          <div class="stat-label">Cancelled</div>
+        </div>
+      </div>
+
+      <!-- Section Title -->
+      <div class="section-title">
+        <i class="bi bi-receipt"></i>
+        Recent Invoices
+      </div>
+
+      <div class="mb-3">
+  <select class="form-select" id="statusFilter" onchange="filterInvoices()">
+    <option value="all">All</option>
+    <option value="paid">Paid</option>
+    <option value="pending">Pending</option>
+    <option value="cancelled">Cancelled</option>
+  </select>
+</div>
+
+
+
+
+
+
+      <!-- Invoice Cards -->
+      <div class="invoice-card paid" onclick="location.href='index.html';">
+        <div class="invoice-header">
+          <div>
+            <div class="client-name">Nasir Uddin</div>
+            <div class="invoice-date">Jul 23, 2022</div>
+          </div>
+        </div>
+        <div class="invoice-details">
+          <div class="invoice-number">#8FB28438-0001</div>
+          <div class="invoice-amount">$1,400</div>
+        </div>
+        <div class="invoice-status status-paid">
+          <div class="status-icon"></div>
+          Paid
+        </div>
+      </div>
+
+      <div class="invoice-card pending" onclick="location.href='index.html';">
+        <div class="invoice-header">
+          <div>
+            <div class="client-name">Sarah Ali</div>
+            <div class="invoice-date">Aug 12, 2022</div>
+          </div>
+        </div>
+        <div class="invoice-details">
+          <div class="invoice-number">#7DC37542-0015</div>
+          <div class="invoice-amount">$900</div>
+        </div>
+        <div class="invoice-status status-pending">
+          <div class="status-icon"></div>
+          Pending
+        </div>
+      </div>
+
+      <div class="invoice-card cancelled" onclick="location.href='index.html';">
+        <div class="invoice-header">
+          <div>
+            <div class="client-name">Mohamed Saleh</div>
+            <div class="invoice-date">Sep 01, 2022</div>
+          </div>
+        </div>
+        <div class="invoice-details">
+          <div class="invoice-number">#9AB48321-0007</div>
+          <div class="invoice-amount">$1,200</div>
+        </div>
+        <div class="invoice-status status-cancelled">
+          <div class="status-icon"></div>
+          Cancelled
+        </div>
+      </div>
+
+      <div class="invoice-card paid" onclick="location.href='index.html';">
+        <div class="invoice-header">
+          <div>
+            <div class="client-name">Layla Hassan</div>
+            <div class="invoice-date">Oct 05, 2022</div>
+          </div>
+        </div>
+        <div class="invoice-details">
+          <div class="invoice-number">#1DC23456-0009</div>
+          <div class="invoice-amount">$1,100</div>
+        </div>
+        <div class="invoice-status status-paid">
+          <div class="status-icon"></div>
+          Paid
+        </div>
+      </div>
+
+      <div class="invoice-card pending" onclick="location.href='index.html';">
+        <div class="invoice-header">
+          <div>
+            <div class="client-name">Omar Khaled</div>
+            <div class="invoice-date">Nov 10, 2022</div>
+          </div>
+        </div>
+        <div class="invoice-details">
+          <div class="invoice-number">#3AB56789-0012</div>
+          <div class="invoice-amount">$850</div>
+        </div>
+        <div class="invoice-status status-pending">
+          <div class="status-icon"></div>
+          Pending
+        </div>
+      </div>
+
+      <div class="invoice-card paid" onclick="location.href='index.html';">
+        <div class="invoice-header">
+          <div>
+            <div class="client-name">Fatima Noor</div>
+            <div class="invoice-date">Dec 15, 2022</div>
+          </div>
+        </div>
+        <div class="invoice-details">
+          <div class="invoice-number">#4CD67890-0004</div>
+          <div class="invoice-amount">$1,300</div>
+        </div>
+        <div class="invoice-status status-paid">
+          <div class="status-icon"></div>
+          Paid
+        </div>
+      </div>
+
+      <div class="invoice-card cancelled" onclick="location.href='index.html';">
+        <div class="invoice-header">
+          <div>
+            <div class="client-name">Yousef Sami</div>
+            <div class="invoice-date">Jan 20, 2023</div>
+          </div>
+        </div>
+        <div class="invoice-details">
+          <div class="invoice-number">#5EF34567-0021</div>
+          <div class="invoice-amount">$1,400</div>
+        </div>
+        <div class="invoice-status status-cancelled">
+          <div class="status-icon"></div>
+          Cancelled
+        </div>
+      </div>
+
+      <div class="invoice-card paid" onclick="location.href='index.html';">
+        <div class="invoice-header">
+          <div>
+            <div class="client-name">Hana Ahmed</div>
+            <div class="invoice-date">Feb 10, 2023</div>
+          </div>
+        </div>
+        <div class="invoice-details">
+          <div class="invoice-number">#6GH12345-0043</div>
+          <div class="invoice-amount">$1,250</div>
+        </div>
+        <div class="invoice-status status-paid">
+          <div class="status-icon"></div>
+          Paid
+        </div>
+      </div>
+
+      <div class="invoice-card pending" onclick="location.href='index.html';">
+        <div class="invoice-header">
+          <div>
+            <div class="client-name">Khaled Zain</div>
+            <div class="invoice-date">Mar 12, 2023</div>
+          </div>
+        </div>
+        <div class="invoice-details">
+          <div class="invoice-number">#7IJ56789-0056</div>
+          <div class="invoice-amount">$900</div>
+        </div>
+        <div class="invoice-status status-pending">
+          <div class="status-icon"></div>
+          Pending
+        </div>
+      </div>
+
+      <div class="invoice-card paid" onclick="location.href='index.html';">
+        <div class="invoice-header">
+          <div>
+            <div class="client-name">Mona Saleh</div>
+            <div class="invoice-date">Apr 05, 2023</div>
+          </div>
+        </div>
+        <div class="invoice-details">
+          <div class="invoice-number">#8KL23456-0078</div>
+          <div class="invoice-amount">$1,150</div>
+        </div>
+        <div class="invoice-status status-paid">
+          <div class="status-icon"></div>
+          Paid
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator">
+    <div class="scroll-progress" style="height: 0%"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Scroll indicator
+    window.addEventListener('scroll', () => {
+      const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+      document.querySelector('.scroll-progress').style.height = scrolled + '%';
+    });
+
+    // Add smooth scrolling
+    document.documentElement.style.scrollBehavior = 'smooth';
+
+  function filterInvoices() {
+  const filter = document.getElementById("statusFilter").value;
+  const cards = document.querySelectorAll(".invoice-card");
+
+  cards.forEach(card => {
+    if (filter === "all") {
+      card.style.display = "block";
+    } else {
+      card.classList.contains(filter) ? card.style.display = "block" : card.style.display = "none";
+    }
+  });
+}
+
+
+
+
+  </script>
+</body>
+</html>

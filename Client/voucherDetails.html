@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="CSS/style.css" rel="stylesheet" />
+ <style>
+    :root {
+      --primary-gradient: linear-gradient(135deg, #2d1b69 0%, #11052c 100%);
+      --primary-color: #2d1b69;
+      --secondary-color: #11052c;
+      --success-color: #16a34a;
+      --warning-color: #f59e0b;
+      --danger-color: #dc2626;
+      --light-bg: #f8f9fa;
+      --card-bg: #ffffff;
+      --border-radius: 16px;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--light-bg);
+      padding: 2rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .dropdown-container {
+      background: var(--primary-gradient);
+      padding: 0.5rem 1rem;
+      border-radius: var(--border-radius);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      display: flex;
+      justify-content: flex-end;
+      max-width: 420px;
+      width: 100%;
+    }
+
+    .menu-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      border-radius: 12px;
+      padding: 8px 12px;
+      color: white;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      cursor: pointer;
+    }
+
+    .menu-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-1px);
+    }
+
+    .dropdown-menu {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      padding: 8px 0;
+      margin-top: 8px;
+      min-width: 200px;
+    }
+
+    .dropdown-item {
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--secondary-color);
+    }
+
+    .dropdown-item:hover {
+      background: rgba(45, 27, 105, 0.1);
+      color: var(--primary-color);
+      transform: translateX(4px);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body class="bg-white d-flex justify-content-center align-items-start min-vh-100 p-2">
+    <!-- Mobile Container -->
+    <div class="bg-white rounded-4 shadow-lg overflow-hidden " style="max-width: 400px; margin: 0 auto; min-height: 100vh;">
+        
+        <!-- Header -->
+        <div class="text-white p-3 d-flex justify-content-between align-items-center"
+            style="background: linear-gradient(135deg, #2d1b69 0%, #11052c 100%)">
+        <div class="d-flex align-items-center">
+            <div class="bg-warning rounded-circle me-2" style="width: 12px; height: 12px;"></div>
+        </div>
+
+        <!-- Dropdown menu -->
+        <div class="dropdown-container">
+    <div class="dropdown">
+      <button
+        class="menu-btn dropdown-toggle"
+        type="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+        aria-label="Menu"
+      >
+        <i class="bi bi-list fs-5"></i>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li><a class="dropdown-item" href="/Client/invoicesList.html"><i class="bi bi-list-ul"></i> Invoices List</a></li>
+        <li><a class="dropdown-item" href="/Client/addVoucher.html"><i class="bi bi-plus-circle"></i> Create New Invoice</a></li>
+      </ul>
+    </div>
+  </div>
+        </div>
+
+        <!-- Invoice Content -->
+        <div class="bg-white">
+            <!-- Invoice Title -->
+            <div class="p-3 border-bottom">
+                <div class="d-flex align-items-center mb-2">
+                    <button class="btn btn-sm rounded-circle me-3 p-2" style="background: linear-gradient(135deg, #2d1b69 0%, #11052c 100%);">
+                    <i class="bi bi-arrow-left text-white "></i>
+                </button>
+                    <div>
+                        <h5 class="mb-0 fw-bold">Invoice <span class="text-primary">#8FB28438-0001</span></h5>
+                        <small class="text-muted">LEGAL CONSULTING</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Invoice Details -->
+            <div class="p-3">
+                <!-- Dates -->
+                <div class="row mb-4">
+                    <div class="col-6">
+                        <div class="text-muted small">Issued On:</div>
+                        <div class="fw-bold">Jul 23, 2022</div>
+                    </div>
+                    <div class="col-6">
+                        <div class="text-muted small">Due On:</div>
+                        <div class="fw-bold">Aug 07, 2022</div>
+                    </div>
+                </div>
+
+                <!-- Bill From -->
+                <div class="mb-4">
+                    <div class="text-muted small mb-2">Bill From</div>
+                    <div class="fw-bold h6">Alex Parkinson</div>
+                    <div class="text-muted small">
+                        3897 Hickory St, Salt Lake City<br>
+                        Utah, United States 84104
+                    </div>
+                </div>
+                <hr>
+
+                <!-- Bill To -->
+                <div class="mb-4">
+                    <div class="text-muted small mb-2">Bill To</div>
+                    <div class="fw-bold h6">Musemind Digital Agency</div>
+                    <div class="text-muted small">
+                        421 Lesly River Suite 478<br>
+                        Sydney, Australia
+                    </div>
+                </div>
+
+                <!-- Invoice Items -->
+                <div class="mb-4">
+                    <h6 class="fw-bold mb-3">Invoice Items</h6>
+                    
+                    <!-- Table Header -->
+                    <div class="row bg-light py-2 rounded-top border">
+                        <div class="col-5 text-muted small fw-bold">Description</div>
+                        <div class="col-2 text-muted small fw-bold">Price</div>
+                        <div class="col-2 text-muted small fw-bold">Qty</div>
+                        <div class="col-3 text-muted small fw-bold">Total Price</div>
+                    </div>
+
+                    <!-- Item 1 -->
+                    <div class="row py-3 border-start border-end border-bottom">
+                        <div class="col-5 small">Concept & Strategy</div>
+                        <div class="col-2 small">$500</div>
+                        <div class="col-2 small">2</div>
+                        <div class="col-3 small fw-bold">$1000</div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="row py-3 border-start border-end border-bottom rounded-bottom">
+                        <div class="col-5 small">Expert Consulting</div>
+                        <div class="col-2 small">$400</div>
+                        <div class="col-2 small">1</div>
+                        <div class="col-3 small fw-bold">$400</div>
+                    </div>
+                </div>
+
+                <!-- Total Amount -->
+                <div class="d-flex justify-content-between align-items-center mb-4 py-3 border-top">
+                    <span class="text-muted">Total Amount</span>
+                    <span class="fw-bold h5">$1400</span>
+                </div>
+
+                <!-- Notes -->
+                <div class="mb-4">
+                    <p class="text-muted small">
+                        Here we can write a additional notes for the client to get a better understanding of this invoice.
+                    </p>
+                </div>
+
+                <!-- Payment Notice -->
+                <div class="alert alert-warning d-flex align-items-start mb-4">
+                    <i class="bi bi-exclamation-triangle me-2 mt-1"></i>
+                    <div class="small">
+                        Don't worry, client will be get a hosted payment field here to make payment with any credit card debit card or bank transfer.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Actions -->
+            <div class="p-3 border-top bg-light d-flex gap-2">
+                <button class="btn btn-outline-primary flex-fill" style="border: none;">PREVIEW</button>
+                <button class="btn btn-outline-secondary flex-fill">Save as Draft</button>
+                <button class="btn btn-primary flex-fill" style="background:#764ba2 ;">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
