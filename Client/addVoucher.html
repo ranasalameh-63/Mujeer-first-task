@@ -10,150 +10,172 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #f8f9fa;
+            color: #ffffff;
         }
         .mobile-container {
             max-width: 390px;
             margin: 0 auto;
-            background: white;
+            background: #000000;
             min-height: 100vh;
+            border: 1px solid #333;
         }
         .header-gradient {
-            background: linear-gradient(135deg, #2d1b69 0%, #11052c 100%);
+            background: linear-gradient(135deg, #C8910E 0%, #A67C00 100%);
         }
         .form-control {
-            border: 1px solid #e5e7eb;
+            border: 1px solid #333;
             border-radius: 8px;
             padding: 12px;
             font-size: 14px;
+            background-color: #1a1a1a;
+            color: #ffffff;
         }
         .form-control:focus {
-            border-color: #764ba2;
-            box-shadow: 0 0 0 0.2rem rgba(99, 102, 241, 0.25);
+            border-color: #C8910E;
+            box-shadow: 0 0 0 0.2rem rgba(200, 145, 14, 0.25);
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+        .form-control::placeholder {
+            color: #888;
         }
         .btn-primary {
-            background: linear-gradient(135deg, #2d1b69 0%, #11052c 100%);
+            background: linear-gradient(135deg, #C8910E 0%, #A67C00 100%);
             border: none;
             border-radius: 12px;
             padding: 12px 24px;
             font-weight: 500;
+            color: #000000;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #A67C00 0%, #C8910E 100%);
+            color: #000000;
         }
         .btn-outline-secondary {
-            border-color: #e5e7eb;
-            color: #6b7280;
+            border-color: #333;
+            color: #ffffff;
             border-radius: 12px;
             padding: 12px 24px;
             font-weight: 500;
+            background-color: transparent;
+        }
+        .btn-outline-secondary:hover {
+            background-color: #333;
+            border-color: #C8910E;
+            color: #C8910E;
         }
         .invoice-item-row {
-            background: #f9fafb;
+            background: #1a1a1a;
             border-radius: 12px;
             margin-bottom: 12px;
             padding: 16px;
+            border: 1px solid #333;
         }
         .total-section {
-            background: #f9fafb;
+            background: #1a1a1a;
             border-radius: 12px;
             padding: 16px;
             text-align: center;
+            border: 1px solid #333;
         }
         .checkbox-custom {
-            accent-color: #764ba2;
+            accent-color: #C8910E;
         }
-    :root {
-      --primary-gradient: linear-gradient(135deg, #2d1b69 0%, #11052c 100%);
-      --primary-color: #2d1b69;
-      --secondary-color: #11052c;
-      --success-color: #16a34a;
-      --warning-color: #f59e0b;
-      --danger-color: #dc2626;
-      --light-bg: #f8f9fa;
-      --card-bg: #ffffff;
-      --border-radius: 16px;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--light-bg);
-      padding: 2rem;
-      display: flex;
-      justify-content: center;
-    }
-
-    .dropdown-container {
-      background: var(--primary-gradient);
-      padding: 0.5rem 1rem;
-      border-radius: var(--border-radius);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      display: flex;
-      justify-content: flex-end;
-      max-width: 420px;
-      width: 100%;
-    }
-
-    .menu-btn {
-      background: rgba(255, 255, 255, 0.1);
-      border: none;
-      border-radius: 12px;
-      padding: 8px 12px;
-      color: white;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-      cursor: pointer;
-    }
-
-    .menu-btn:hover {
-      background: rgba(255, 255, 255, 0.2);
-      transform: translateY(-1px);
-    }
-
-    .dropdown-menu {
-      border: none;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      padding: 8px 0;
-      margin-top: 8px;
-      min-width: 200px;
-    }
-
-    .dropdown-item {
-      border-radius: 8px;
-      padding: 12px 16px;
-      font-weight: 500;
-      transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--secondary-color);
-    }
-
-    .dropdown-item:hover {
-      background: rgba(45, 27, 105, 0.1);
-      color: var(--primary-color);
-      transform: translateX(4px);
-      text-decoration: none;
-    }
+        .text-muted {
+            color: #888 !important;
+        }
+        .text-primary {
+            color: #C8910E !important;
+        }
+        .text-success {
+            color: #C8910E !important;
+        }
+        .bg-warning {
+            background-color: #C8910E !important;
+        }
+        .btn-link {
+            color: #C8910E;
+        }
+        .btn-link:hover {
+            color: #A67C00;
+        }
+        .dropdown-menu {
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            padding: 8px 0;
+            margin-top: 8px;
+            min-width: 200px;
+        }
+        .dropdown-item {
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #ffffff;
+        }
+        .dropdown-item:hover {
+            background: rgba(200, 145, 14, 0.1);
+            color: #C8910E;
+            transform: translateX(4px);
+            text-decoration: none;
+        }
+        .menu-btn {
+            background: rgba(200, 145, 14, 0.1);
+            border: none;
+            border-radius: 12px;
+            padding: 8px 12px;
+            color: white;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+        }
+        .menu-btn:hover {
+            background: rgba(200, 145, 14, 0.2);
+            transform: translateY(-1px);
+        }
+        .dropdown-container {
+            padding: 0.5rem 1rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            display: flex;
+            justify-content: flex-end;
+            max-width: 420px;
+            width: 100%;
+        }
+        input[type="date"] {
+            color: #ffffff;
+        }
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+        }
+        .form-check-input:checked {
+            background-color: #C8910E;
+            border-color: #C8910E;
+        }
+        .form-check-input:focus {
+            border-color: #C8910E;
+            box-shadow: 0 0 0 0.25rem rgba(200, 145, 14, 0.25);
+        }
     </style>
 </head>
-<body class="bg-white d-flex justify-content-center align-items-start min-vh-100 p-2">
-    <div class="mobile-container bg-white rounded-4 shadow-lg overflow-hidden">
+<body class="d-flex justify-content-center align-items-start min-vh-100 p-2">
+    <div class="mobile-container bg-black rounded-4 shadow-lg overflow-hidden" style="max-width: 400px; margin: 0 auto; min-height: 100vh;">
         <!-- Header -->
-        <div class="text-white p-3 d-flex justify-content-between align-items-center"
-            style="background: linear-gradient(135deg, #2d1b69 0%, #11052c 100%)">
-        <div class="d-flex align-items-center">
-            <div class="bg-warning rounded-circle me-2" style="width: 12px; height: 12px;"></div>
-        </div>
+        <div class="text-white p-3 d-flex justify-content-between align-items-center"style="background-color: #000;">
+  
+  <div class="d-flex align-items-center">
+    <img src="/Images/MujeerLogo.png" alt="Logo" style="height: 60px;" class="me-2">
+  </div>
 
-        <!-- Dropdown menu -->
-        <div class="dropdown-container">
+  <!-- Dropdown menu -->
+  <div class="dropdown-container">
     <div class="dropdown">
-      <button
-        class="menu-btn dropdown-toggle"
-        type="button"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-        aria-label="Menu"
-      >
+      <button class="menu-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Menu">
         <i class="bi bi-list fs-5"></i>
       </button>
       <ul class="dropdown-menu dropdown-menu-end">
@@ -162,15 +184,16 @@
       </ul>
     </div>
   </div>
-        </div>
+</div>
+<hr>
 
         <!-- Page Header -->
-        <div class="p-3 bg-white">
+        <div class="p-3 bg-black">
             <div class="d-flex align-items-center mb-3">
-                <button class="btn btn-sm rounded-circle me-3 p-2" style="background: linear-gradient(135deg, #2d1b69 0%, #11052c 100%);">
-                    <i class="bi bi-arrow-left text-white "></i>
+                <button class="btn btn-sm rounded-circle me-3 p-2" style="background: linear-gradient(135deg, #C8910E 0%, #A67C00 100%);">
+                    <i class="bi bi-arrow-left text-black"></i>
                 </button>
-                <h5 class="mb-0 fw-bold">Create New Invoice</h5>
+                <h5 class="mb-0 fw-bold text-white">Create New Invoice</h5>
             </div>
         </div>
 
@@ -184,21 +207,20 @@
                             <span class="text-muted">Invoice </span>
                             <span class="text-primary fw-bold">#8FB28438-0001</span>
                         </div>
-                        <button type="button" class="btn btn-link p-0 text-decoration-none" style="color: #a8a8a8;">
+                        <button type="button" class="btn btn-link p-0 text-decoration-none" style="color: #888;">
                         <i class="bi bi-link-45deg me-1"></i>COPY LINK
                         </button>
-
                     </div>
                 </div>
 
                 <!-- Recipient Email -->
                 <div class="mb-3">
                     <label class="form-label text-muted mb-2">Recipient Email</label>
-                    <div class="form-control d-flex align-items-center" style="background-color: #f9fafb;">
+                    <div class="form-control d-flex align-items-center" style="background-color: #1a1a1a;">
                         <input type="email" class="form-control fw-medium" 
                         value="iamnasir368@gmail.com" 
                         placeholder="Enter recipient email" 
-                        style="background-color: #f9fafb;" />
+                        style="background-color: #1a1a1a; border: none; color: #ffffff;" />
                     </div>
                 </div>
 
@@ -215,7 +237,7 @@
                     <div class="form-control d-flex align-items-center">
                     <i class="bi bi-calendar3 me-2 text-muted"></i>
                     <input type="date" class="border-0 p-0 flex-grow-1" 
-                            style="background: transparent; outline: none; font-size: 0.85rem; padding: 0;" />
+                            style="background: transparent; outline: none; font-size: 0.85rem; padding: 0; color: #ffffff;" />
                     </div>
                 </div>
                 <div class="col-6">
@@ -223,11 +245,10 @@
                     <div class="form-control d-flex align-items-center">
                     <i class="bi bi-calendar3 me-2 text-muted"></i>
                     <input type="date" class="border-0 p-0 flex-grow-1" 
-                            style="background: transparent; outline: none; font-size: 0.85rem; padding: 0;" />
+                            style="background: transparent; outline: none; font-size: 0.85rem; padding: 0; color: #ffffff;" />
                     </div>
                 </div>
                 </div>
-
 
                 <!-- Bill From -->
                 <div class="mb-3">
@@ -245,7 +266,7 @@
                 <div class="mb-4">
                     <div class="form-check">
                         <input class="form-check-input checkbox-custom" type="checkbox" id="recurringInvoice" checked>
-                        <label class="form-check-label" for="recurringInvoice">
+                        <label class="form-check-label text-white" for="recurringInvoice">
                             This is a recurring invoice (Monthly)
                         </label>
                     </div>
@@ -253,7 +274,7 @@
 
                 <!-- Invoice Items Section -->
                         <div class="mb-4">
-                        <h6 class="fw-bold mb-3">Invoice Items</h6>
+                        <h6 class="fw-bold mb-3 text-white">Invoice Items</h6>
 
                         <!-- Item Headers -->
                         <div class="row text-muted small mb-2">
@@ -270,15 +291,15 @@
                             <div class="invoice-item-row">
                             <div class="row align-items-center">
                                 <div class="col-4">
-                                <input type="text" class="form-control border-0 bg-transparent p-0 fw-medium" value="Legal Advising">
+                                <input type="text" class="form-control border-0 bg-transparent p-0 fw-medium text-white" value="Legal Advising">
                                 </div>
                                 <div class="col-2">
-                                <input type="number" class="form-control border-0 bg-transparent p-0 text-center" value="500">
+                                <input type="number" class="form-control border-0 bg-transparent p-0 text-center text-white" value="500">
                                 </div>
                                 <div class="col-2">
-                                <input type="number" class="form-control border-0 bg-transparent p-0 text-center" value="2">
+                                <input type="number" class="form-control border-0 bg-transparent p-0 text-center text-white" value="2">
                                 </div>
-                                <div class="col-3 text-end fw-bold">1000</div>
+                                <div class="col-3 text-end fw-bold text-white">1000</div>
                                 <div class="col-1 text-end">
                                 <button type="button" class="btn btn-link p-0 text-muted">
                                     <i class="bi bi-three-dots-vertical"></i>
@@ -291,15 +312,15 @@
                     <div class="invoice-item-row">
                         <div class="row align-items-center">
                             <div class="col-4">
-                                <input type="text" class="form-control border-0 bg-transparent p-0 fw-medium" value="Expert Consulting">
+                                <input type="text" class="form-control border-0 bg-transparent p-0 fw-medium text-white" value="Expert Consulting">
                             </div>
                             <div class="col-2">
-                                <input type="number" class="form-control border-0 bg-transparent p-0 text-center" value="400">
+                                <input type="number" class="form-control border-0 bg-transparent p-0 text-center text-white" value="400">
                             </div>
                             <div class="col-2">
-                                <input type="number" class="form-control border-0 bg-transparent p-0 text-center" value="1">
+                                <input type="number" class="form-control border-0 bg-transparent p-0 text-center text-white" value="1">
                             </div>
-                            <div class="col-3 text-end fw-bold">400</div>
+                            <div class="col-3 text-end fw-bold text-white">400</div>
                             <div class="col-1 text-end">
                                 <button type="button" class="btn btn-link p-0 text-muted">
                                     <i class="bi bi-three-dots-vertical"></i>
@@ -320,7 +341,6 @@
                         <div class="h4 fw-bold text-success mb-0">$1400</div>
                     </div>
                     </div>
-
 
                 <!-- Additional Notes -->
                 <div class="mb-4">
@@ -346,7 +366,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
-
         function addItem() {
             const container = document.getElementById('invoice-items');
             const newItem = document.createElement('div');
@@ -354,15 +373,15 @@
             newItem.innerHTML = `
                 <div class="row align-items-center">
                 <div class="col-4">
-                    <input type="text" class="form-control border-0 bg-transparent p-0 fw-medium" placeholder="Item">
+                    <input type="text" class="form-control border-0 bg-transparent p-0 fw-medium text-white" placeholder="Item">
                 </div>
                 <div class="col-2">
-                    <input type="number" class="form-control border-0 bg-transparent p-0 text-center" value="0">
+                    <input type="number" class="form-control border-0 bg-transparent p-0 text-center text-white" value="0">
                 </div>
                 <div class="col-2">
-                    <input type="number" class="form-control border-0 bg-transparent p-0 text-center" value="1">
+                    <input type="number" class="form-control border-0 bg-transparent p-0 text-center text-white" value="1">
                 </div>
-                <div class="col-3 text-end fw-bold">0</div>
+                <div class="col-3 text-end fw-bold text-white">0</div>
                 <div class="col-1 text-end">
                     <button type="button" class="btn btn-link p-0 text-muted">
                     <i class="bi bi-three-dots-vertical"></i>
@@ -371,8 +390,7 @@
                 </div>
             `;
             container.appendChild(newItem);
-}
-     
+        }
     </script>
 </body>
 </html>

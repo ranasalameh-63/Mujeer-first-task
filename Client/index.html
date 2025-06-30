@@ -11,14 +11,14 @@
     <link href="CSS/style.css" rel="stylesheet" />
      <style>
     :root {
-      --primary-gradient: linear-gradient(135deg, #2d1b69 0%, #11052c 100%);
-      --primary-color: #2d1b69;
-      --secondary-color: #11052c;
+      --primary-gradient: linear-gradient(135deg, #C8910E 0%, #A67C0A 100%);
+      --primary-color: #C8910E;
+      --secondary-color: #A67C0A;
       --success-color: #16a34a;
-      --warning-color: #f59e0b;
+      --warning-color: #C8910E;
       --danger-color: #dc2626;
-      --light-bg: #f8f9fa;
-      --card-bg: #ffffff;
+      --light-bg: #000000;
+      --card-bg: #1a1a1a;
       --border-radius: 16px;
     }
 
@@ -31,10 +31,9 @@
     }
 
     .dropdown-container {
-      background: var(--primary-gradient);
       padding: 0.5rem 1rem;
       border-radius: var(--border-radius);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      box-shadow: 0 10px 30px rgba(200, 145, 14, 0.3);
       display: flex;
       justify-content: flex-end;
       max-width: 420px;
@@ -60,10 +59,11 @@
     .dropdown-menu {
       border: none;
       border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      box-shadow: 0 10px 30px rgba(200, 145, 14, 0.3);
       padding: 8px 0;
       margin-top: 8px;
       min-width: 200px;
+      background: var(--card-bg);
     }
 
     .dropdown-item {
@@ -74,36 +74,30 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      color: var(--secondary-color);
+      color: white;
     }
 
     .dropdown-item:hover {
-      background: rgba(45, 27, 105, 0.1);
+      background: rgba(200, 145, 14, 0.2);
       color: var(--primary-color);
       transform: translateX(4px);
       text-decoration: none;
     }
   </style>
 </head>
-    <body class="bg-white d-flex justify-content-center align-items-start min-vh-100 p-2">
-    <div class="bg-white rounded-4 shadow-lg overflow-hidden" style="max-width: 400px; margin: 0 auto; min-height: 100vh;">
+    <body class="d-flex justify-content-center align-items-start min-vh-100 p-2" style="background-color: white;">
+    <div class="rounded-4 shadow-lg overflow-hidden" style="max-width: 400px; margin: 0 auto; min-height: 100vh; background-color: #1a1a1a;">
         <!-- Header -->
-        <div class="text-white p-3 d-flex justify-content-between align-items-center"
-            style="background: linear-gradient(135deg, #2d1b69 0%, #11052c 100%)">
-        <div class="d-flex align-items-center">
-            <div class="bg-warning rounded-circle me-2" style="width: 12px; height: 12px;"></div>
-        </div>
+        <div class="text-white p-3 d-flex justify-content-between align-items-center"style="background-color: #000;">
+  
+  <div class="d-flex align-items-center">
+    <img src="/Images/MujeerLogo.png" alt="Logo" style="height: 60px;" class="me-2">
+  </div>
 
-        <!-- Dropdown menu -->
-        <div class="dropdown-container">
+  <!-- Dropdown menu -->
+  <div class="dropdown-container">
     <div class="dropdown">
-      <button
-        class="menu-btn dropdown-toggle"
-        type="button"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-        aria-label="Menu"
-      >
+      <button class="menu-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Menu">
         <i class="bi bi-list fs-5"></i>
       </button>
       <ul class="dropdown-menu dropdown-menu-end">
@@ -112,19 +106,20 @@
       </ul>
     </div>
   </div>
-        </div>
+</div>
+
 
 
         <!-- Invoice Content -->
-        <div class="bg-white">
-            <div class="p-3 border-bottom">
+        <div style="background-color: #1a1a1a;">
+            <div class="p-3" style="border-bottom: 1px solid #333;">
                 <div class="d-flex align-items-center mb-2">
-                    <button class="btn btn-sm rounded-circle me-3 p-2" style="background: linear-gradient(135deg, #2d1b69 0%, #11052c 100%);">
+                    <button class="btn btn-sm rounded-circle me-3 p-2" style="background: linear-gradient(135deg, #C8910E 0%, #A67C0A 100%);">
                     <i class="bi bi-arrow-left text-white "></i>
                 </button>
                     <div>
-                        <h5 class="mb-0 fw-bold">Invoice <span class="text-primary">#8FB28438-0001</span></h5>
-                        <small class="text-muted">LEGAL CONSULTING | DUE ON: AUG 07, 2022</small>
+                        <h5 class="mb-0 fw-bold text-white">Invoice <span style="color: #C8910E;">#8FB28438-0001</span></h5>
+                        <small class="text-white">LEGAL CONSULTING | DUE ON: AUG 07, 2022</small>
                     </div>
                 </div>
             </div>
@@ -133,67 +128,69 @@
             <div class="p-4">
                 <div class="mb-4">
                     <div class="mb-3">
-                        <p class="text-muted mb-1" style="font-size: 0.875rem;">To</p>
-                        <h6 class="mb-0 fw-bold">Musemind Digital Agency</h6>
+                        <p class="mb-1" style="font-size: 0.875rem; color: #C8910E;">To</p>
+                        <h6 class="mb-0 fw-bold text-white">Musemind Digital Agency</h6>
                     </div>
                     <div class="mb-3">
-                        <p class="text-muted mb-1" style="font-size: 0.875rem;">From</p>
-                        <h6 class="mb-0 fw-bold">Alex Parkinson</h6>
+                        <p class=" mb-1" style="font-size: 0.875rem; color: #C8910E;">From</p>
+                        <h6 class="mb-0 fw-bold text-white">Alex Parkinson</h6>
                     </div>
                     <div class="mb-0">
-                        <p class="text-muted mb-1" style="font-size: 0.875rem;">Note</p>
-                        <p class="mb-0">Please review this closely, I think I may have overcharged you.</p>
+                        <p class="mb-1" style="font-size: 0.875rem; color: #C8910E;">Note:</p>
+                        <p class="mb-0 text-white">Please review this closely, I think I may have overcharged you.</p>
                     </div>
                 </div>
 
                 <!-- Invoice Items -->
                 <div class="mb-4">
-                    <h5 class="mb-4 fw-bold">Invoice Items</h5>
+                    <h5 class="mb-4 fw-bold text-white">Invoice Items</h5>
                     
                     <!-- Mobile-First Table -->
-                    <div class="bg-light rounded-3 overflow-hidden">
-                        <div class="row g-0 bg-secondary bg-opacity-10 py-3 px-3">
-                            <div class="col-5 text-muted fw-normal">Description</div>
-                            <div class="col-2 text-muted fw-normal text-center">Price</div>
-                            <div class="col-2 text-muted fw-normal text-center">Qty</div>
-                            <div class="col-3 text-muted fw-normal text-end">Total Price</div>
+                    <div class="rounded-3 overflow-hidden" style="background-color: #2a2a2a;">
+                        <div class="row g-0 py-3 px-3" style="background-color: #333;">
+                          <div class="col-5 text-white fw-normal">Description</div>
+                          <div class="col-2 text-white fw-normal text-center">Price</div>
+                          <div class="col-2 text-white fw-normal text-center">Qty</div>
+                          <div class="col-3 text-white fw-normal text-end">Total Price</div>
                         </div>
-                        <div class="row g-0 py-3 px-3 border-bottom border-light">
-                            <div class="col-5 fw-semibold">Concept & Strategy</div>
-                            <div class="col-2 text-center">$500</div>
-                            <div class="col-2 text-center">2</div>
-                            <div class="col-3 text-end fw-semibold">$1000</div>
+
+                        <div class="row g-0 py-3 px-3" style="border-bottom: 1px solid #333;">
+                            <div class="col-5 fw-semibold text-white">Concept & Strategy</div>
+                            <div class="col-2 text-center" style="color: #C8910E;">$500</div>
+                            <div class="col-2 text-center text-white">2</div>
+                            <div class="col-3 text-end fw-semibold" style="color: #C8910E;">$1000</div>
                         </div>
                         <div class="row g-0 py-3 px-3">
-                            <div class="col-5 fw-semibold">Expert Consulting</div>
-                            <div class="col-2 text-center">$400</div>
-                            <div class="col-2 text-center">1</div>
-                            <div class="col-3 text-end fw-semibold">$400</div>
+                            <div class="col-5 fw-semibold text-white">Expert Consulting</div>
+                            <div class="col-2 text-center" style="color: #C8910E;">$400</div>
+                            <div class="col-2 text-center text-white">1</div>
+                            <div class="col-3 text-end fw-semibold" style="color: #C8910E;">$400</div>
                         </div>
                     </div>
 
                     <!-- Total Amount -->
-                    <div class="d-flex justify-content-between align-items-center py-4 border-top mt-4">
-                        <h5 class="mb-0 fw-bold">Total Amount</h5>
-                        <h4 class="mb-0 fw-bold">$1400</h4>
+                    <div class="d-flex justify-content-between align-items-center py-4 mt-4" style="border-top: 1px solid #333;">
+                        <h5 class="mb-0 fw-bold text-white">Total Amount</h5>
+                        <h4 class="mb-0 fw-bold" style="color: #C8910E;">$1400</h4>
                     </div>
                 </div>
 
                 <!-- Additional Notes -->
-                <div class="bg-light p-3 rounded-3 mb-4">
-                    <p class="text-muted mb-0">Here we can write additional notes for the client to get a better understanding of this invoice.</p>
+                <div class="p-3 rounded-3 mb-4" style="background-color: white;">
+                  <textarea class="form-control border-0 p-0 text-muted" rows="3" placeholder="Here we can write additional notes for the client to get a better understanding of this invoice."></textarea>
                 </div>
+
             </div>
 
             <!-- Action Buttons -->
-            <div class="p-4 border-top">
+            <div class="p-4" style="border-top: 1px solid #333;">
                 <div class="row g-3">
                     <div class="col-6">
-                        <button class="btn btn-outline-secondary w-100 py-3 fw-semibold rounded-3">Close</button>
+                        <button class="btn w-100 py-3 fw-semibold rounded-3 text-white" style="border: 2px solid #C8910E; background-color: transparent;">Close</button>
                     </div>
                    <div class="col-6">
                     <a href="voucherDetails.html" style="text-decoration: none;">
-                        <button class="btn text-white w-100 py-3 fw-semibold rounded-3" style="background: #764ba2 ;">
+                        <button class="btn text-black w-100 py-3 fw-semibold rounded-3" style="background: #C8910E;">
                         Pay $1400
                         </button>
                     </a>
