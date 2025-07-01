@@ -1,376 +1,463 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create New Invoice</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: #ffffff;
-        }
-        .mobile-container {
-            max-width: 390px;
-            margin: 0 auto;
-            background: #000000;
-            min-height: 100vh;
-            border: 1px solid #333;
-        }
-        .header-gradient {
-            background: linear-gradient(135deg, #C8910E 0%, #A67C00 100%);
-        }
-        .form-control {
-            border: 1px solid #333;
-            border-radius: 8px;
-            padding: 12px;
-            font-size: 14px;
-            background-color: #1a1a1a;
-            color: #ffffff;
-        }
-        .form-control:focus {
-            border-color: #C8910E;
-            box-shadow: 0 0 0 0.2rem rgba(200, 145, 14, 0.25);
-            background-color: #1a1a1a;
-            color: #ffffff;
-        }
-        .form-control::placeholder {
-            color: #888;
-        }
-        .btn-primary {
-            background: linear-gradient(135deg, #C8910E 0%, #A67C00 100%);
-            border: none;
-            border-radius: 12px;
-            padding: 12px 24px;
-            font-weight: 500;
-            color: #000000;
-        }
-        .btn-primary:hover {
-            background: linear-gradient(135deg, #A67C00 0%, #C8910E 100%);
-            color: #000000;
-        }
-        .btn-outline-secondary {
-            border-color: #333;
-            color: #ffffff;
-            border-radius: 12px;
-            padding: 12px 24px;
-            font-weight: 500;
-            background-color: transparent;
-        }
-        .btn-outline-secondary:hover {
-            background-color: #333;
-            border-color: #C8910E;
-            color: #C8910E;
-        }
-        .invoice-item-row {
-            background: #1a1a1a;
-            border-radius: 12px;
-            margin-bottom: 12px;
-            padding: 16px;
-            border: 1px solid #333;
-        }
-        .total-section {
-            background: #1a1a1a;
-            border-radius: 12px;
-            padding: 16px;
-            text-align: center;
-            border: 1px solid #333;
-        }
-        .checkbox-custom {
-            accent-color: #C8910E;
-        }
-        .text-muted {
-            color: #888 !important;
-        }
-        .text-primary {
-            color: #C8910E !important;
-        }
-        .text-success {
-            color: #C8910E !important;
-        }
-        .bg-warning {
-            background-color: #C8910E !important;
-        }
-        .btn-link {
-            color: #C8910E;
-        }
-        .btn-link:hover {
-            color: #A67C00;
-        }
-        .dropdown-menu {
-            background-color: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            padding: 8px 0;
-            margin-top: 8px;
-            min-width: 200px;
-        }
-        .dropdown-item {
-            border-radius: 8px;
-            padding: 12px 16px;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #ffffff;
-        }
-        .dropdown-item:hover {
-            background: rgba(200, 145, 14, 0.1);
-            color: #C8910E;
-            transform: translateX(4px);
-            text-decoration: none;
-        }
-        .menu-btn {
-            background: rgba(200, 145, 14, 0.1);
-            border: none;
-            border-radius: 12px;
-            padding: 8px 12px;
-            color: white;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            cursor: pointer;
-        }
-        .menu-btn:hover {
-            background: rgba(200, 145, 14, 0.2);
-            transform: translateY(-1px);
-        }
-        .dropdown-container {
-            padding: 0.5rem 1rem;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            display: flex;
-            justify-content: flex-end;
-            max-width: 420px;
-            width: 100%;
-        }
-        input[type="date"] {
-            color: #ffffff;
-        }
-        input[type="date"]::-webkit-calendar-picker-indicator {
-            filter: invert(1);
-        }
-        .form-check-input:checked {
-            background-color: #C8910E;
-            border-color: #C8910E;
-        }
-        .form-check-input:focus {
-            border-color: #C8910E;
-            box-shadow: 0 0 0 0.25rem rgba(200, 145, 14, 0.25);
-        }
+      body {
+        font-family: "Poppins", sans-serif;
+        color: #ffffff;
+      }
+      .mobile-container {
+        max-width: 390px;
+        margin: 0 auto;
+        background: #1E1E1E;
+        min-height: 100vh;
+        border: 1px solid #333;
+      }
+      .header-gradient {
+        background: linear-gradient(135deg, #c8910e 0%, #a67c00 100%);
+      }
+      .form-control {
+        border: 1px solid #333;
+        border-radius: 8px;
+        padding: 12px;
+        font-size: 14px;
+        background-color: #1a1a1a;
+        color: #ffffff;
+      }
+      .form-control:focus {
+        border-color: #c8910e;
+        box-shadow: 0 0 0 0.2rem rgba(200, 145, 14, 0.25);
+        background-color: #1a1a1a;
+        color: #ffffff;
+      }
+      .form-control::placeholder {
+        color: #888;
+      }
+      .btn-primary {
+        background: linear-gradient(135deg, #c8910e 0%, #a67c00 100%);
+        border: none;
+        border-radius: 12px;
+        padding: 12px 24px;
+        font-weight: 500;
+        color: #000000;
+      }
+      .btn-primary:hover {
+        background: linear-gradient(135deg, #a67c00 0%, #c8910e 100%);
+        color: #000000;
+      }
+      .btn-outline-secondary {
+        border-color: #333;
+        color: #ffffff;
+        border-radius: 12px;
+        padding: 12px 24px;
+        font-weight: 500;
+        background-color: transparent;
+      }
+      .btn-outline-secondary:hover {
+        background-color: #333;
+        border-color: #c8910e;
+        color: #c8910e;
+      }
+      .invoice-item-row {
+        background: #1a1a1a;
+        border-radius: 12px;
+        margin-bottom: 12px;
+        padding: 16px;
+        border: 1px solid #333;
+      }
+      .total-section {
+        background: #1a1a1a;
+        border-radius: 12px;
+        padding: 16px;
+        text-align: center;
+        border: 1px solid #333;
+      }
+      .checkbox-custom {
+        accent-color: #c8910e;
+      }
+      .text-muted {
+        color: #888 !important;
+      }
+      .text-primary {
+        color: #c8910e !important;
+      }
+      .text-success {
+        color: #c8910e !important;
+      }
+      .bg-warning {
+        background-color: #c8910e !important;
+      }
+      .btn-link {
+        color: #c8910e;
+      }
+      .btn-link:hover {
+        color: #a67c00;
+      }
+      .dropdown-menu {
+        background-color: #1a1a1a;
+        border: 1px solid #333;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        padding: 8px 0;
+        margin-top: 8px;
+        min-width: 200px;
+      }
+      .dropdown-item {
+        border-radius: 8px;
+        padding: 12px 16px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #ffffff;
+      }
+      .dropdown-item:hover {
+        background: rgba(200, 145, 14, 0.1);
+        color: #c8910e;
+        transform: translateX(4px);
+        text-decoration: none;
+      }
+      .menu-btn {
+        background: black;
+        border: none;
+        border-radius: 12px;
+        padding: 8px 12px;
+        color: white;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+      }
+      .menu-btn:hover {
+        transform: translateY(-1px);
+      }
+      .dropdown-container {
+        padding: 0.5rem 1rem;
+        border-radius: 16px;
+        display: flex;
+        justify-content: flex-end;
+        max-width: 420px;
+        width: 100%;
+      }
+      input[type="date"] {
+        color: #ffffff;
+      }
+      input[type="date"]::-webkit-calendar-picker-indicator {
+        filter: invert(1);
+      }
+      .form-check-input:checked {
+        background-color: #c8910e;
+        border-color: #c8910e;
+      }
+      .form-check-input:focus {
+        border-color: #c8910e;
+        box-shadow: 0 0 0 0.25rem rgba(200, 145, 14, 0.25);
+      }
     </style>
-</head>
-<body class="d-flex justify-content-center align-items-start min-vh-100 p-2">
-    <div class="mobile-container bg-black rounded-4 shadow-lg overflow-hidden" style="max-width: 400px; margin: 0 auto; min-height: 100vh;">
-        <!-- Header -->
-        <div class="text-white p-3 d-flex justify-content-between align-items-center"style="background-color: #000;">
-  
-  <div class="d-flex align-items-center">
-    <img src="/Images/MujeerLogo.png" alt="Logo" style="height: 60px;" class="me-2">
-  </div>
+  </head>
+  <body>
+    <div
+      class="mobile-container shadow-lg overflow-hidden"
+      style="max-width: 430px; margin: 0 auto; min-height: 100vh; background-color: #1E1E1E;"
+    >
+      
 
-  <!-- Dropdown menu -->
-  <div class="dropdown-container">
-    <div class="dropdown">
-      <button class="menu-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Menu">
-        <i class="bi bi-list fs-5"></i>
-      </button>
-      <ul class="dropdown-menu dropdown-menu-end">
-        <li><a class="dropdown-item" href="/Client/invoicesList.html"><i class="bi bi-list-ul"></i> Invoices List</a></li>
-        <li><a class="dropdown-item" href="/Client/addVoucher.html"><i class="bi bi-plus-circle"></i> Create New Invoice</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
-<hr>
+      <!-- Page Header -->
+      <div class="p-3">
+        <div class="d-flex align-items-center mb-3">
+          <button
+            class="btn btn-sm rounded-circle me-3 p-2"
+            style="
+              background: linear-gradient(135deg, #c8910e 0%, #a67c00 100%);
+            "
+          >
+            <i class="bi bi-arrow-left text-black"></i>
+          </button>
+          <h5 class="mb-0 fw-bold text-white">Create New Invoice</h5>
+        </div>
+      </div>
 
-        <!-- Page Header -->
-        <div class="p-3 bg-black">
-            <div class="d-flex align-items-center mb-3">
-                <button class="btn btn-sm rounded-circle me-3 p-2" style="background: linear-gradient(135deg, #C8910E 0%, #A67C00 100%);">
-                    <i class="bi bi-arrow-left text-black"></i>
-                </button>
-                <h5 class="mb-0 fw-bold text-white">Create New Invoice</h5>
+      <!-- Form Content -->
+      <div class="px-3 pb-3">
+        <form>
+          <!-- Invoice Number -->
+          <div class="mb-4">
+            <div class="d-flex align-items-center justify-content-between">
+              <div>
+                <span class="text-muted">Invoice </span>
+                <span class="text-primary fw-bold">#8FB28438-0001</span>
+              </div>
+              <button
+                type="button"
+                class="btn btn-link p-0 text-decoration-none"
+                style="color: #888"
+                id="copyLinkBtn"
+              >
+                <i class="bi bi-link-45deg me-1"></i>COPY LINK
+              </button>
             </div>
-        </div>
+          </div>
 
-        <!-- Form Content -->
-        <div class="px-3 pb-3">
-            <form>
-                <!-- Invoice Number -->
-                <div class="mb-4">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <div>
-                            <span class="text-muted">Invoice </span>
-                            <span class="text-primary fw-bold">#8FB28438-0001</span>
-                        </div>
-                        <button type="button" class="btn btn-link p-0 text-decoration-none" style="color: #888;">
-                        <i class="bi bi-link-45deg me-1"></i>COPY LINK
-                        </button>
-                    </div>
-                </div>
+          <!-- Recipient Email -->
+          <div class="mb-3">
+            <label class="form-label text-muted mb-2">Recipient Email</label>
+            <div
+              class="form-control d-flex align-items-center"
+              style="background-color: #1a1a1a"
+            >
+              <input
+                type="email"
+                class="form-control fw-medium"
+                value="iamnasir368@gmail.com"
+                placeholder="Enter recipient email"
+                style="background-color: #1a1a1a; border: none; color: #ffffff"
+              />
+            </div>
+          </div>
 
-                <!-- Recipient Email -->
-                <div class="mb-3">
-                    <label class="form-label text-muted mb-2">Recipient Email</label>
-                    <div class="form-control d-flex align-items-center" style="background-color: #1a1a1a;">
-                        <input type="email" class="form-control fw-medium" 
-                        value="iamnasir368@gmail.com" 
-                        placeholder="Enter recipient email" 
-                        style="background-color: #1a1a1a; border: none; color: #ffffff;" />
-                    </div>
-                </div>
+          <!-- Project Description -->
+          <div class="mb-3">
+            <label class="form-label text-muted mb-2"
+              >Project Description</label
+            >
+            <input
+              type="text"
+              class="form-control fw-medium"
+              value="Legal Counseling"
+            />
+          </div>
 
-                <!-- Project Description -->
-                <div class="mb-3">
-                    <label class="form-label text-muted mb-2">Project Description</label>
-                    <input type="text" class="form-control fw-medium" value="Legal Counseling">
-                </div>
+          <!-- Dates Row -->
+          <div class="row mb-3">
+            <div class="col-6">
+              <label class="form-label text-muted mb-2">Issued On</label>
+              <div class="form-control d-flex align-items-center">
+                <i class="bi bi-calendar3 me-2 text-muted"></i>
+                <input
+                  type="date"
+                  class="border-0 p-0 flex-grow-1"
+                  style="
+                    background: transparent;
+                    outline: none;
+                    font-size: 0.85rem;
+                    padding: 0;
+                    color: #ffffff;
+                  "
+                />
+              </div>
+            </div>
+            <div class="col-6">
+              <label class="form-label text-muted mb-2">Due On</label>
+              <div class="form-control d-flex align-items-center">
+                <i class="bi bi-calendar3 me-2 text-muted"></i>
+                <input
+                  type="date"
+                  class="border-0 p-0 flex-grow-1"
+                  style="
+                    background: transparent;
+                    outline: none;
+                    font-size: 0.85rem;
+                    padding: 0;
+                    color: #ffffff;
+                  "
+                />
+              </div>
+            </div>
+          </div>
 
-                <!-- Dates Row -->
-                <div class="row mb-3">
-                <div class="col-6">
-                    <label class="form-label text-muted mb-2">Issued On</label>
-                    <div class="form-control d-flex align-items-center">
-                    <i class="bi bi-calendar3 me-2 text-muted"></i>
-                    <input type="date" class="border-0 p-0 flex-grow-1" 
-                            style="background: transparent; outline: none; font-size: 0.85rem; padding: 0; color: #ffffff;" />
-                    </div>
-                </div>
-                <div class="col-6">
-                    <label class="form-label text-muted mb-2">Due On</label>
-                    <div class="form-control d-flex align-items-center">
-                    <i class="bi bi-calendar3 me-2 text-muted"></i>
-                    <input type="date" class="border-0 p-0 flex-grow-1" 
-                            style="background: transparent; outline: none; font-size: 0.85rem; padding: 0; color: #ffffff;" />
-                    </div>
-                </div>
-                </div>
+          <!-- Bill From -->
+          <div class="mb-3">
+            <label class="form-label text-muted mb-2">Bill From</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="3897 Hickory St, United States 84104"
+            />
+          </div>
 
-                <!-- Bill From -->
-                <div class="mb-3">
-                    <label class="form-label text-muted mb-2">Bill From</label>
-                    <input type="text" class="form-control" placeholder="3897 Hickory St, United States 84104">
-                </div>
+          <!-- Bill To -->
+          <div class="mb-3">
+            <label class="form-label text-muted mb-2">Bill To</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="421 Lesly River Suite 478 Sydney, Australia"
+            />
+          </div>
 
-                <!-- Bill To -->
-                <div class="mb-3">
-                    <label class="form-label text-muted mb-2">Bill To</label>
-                    <input type="text" class="form-control" placeholder="421 Lesly River Suite 478 Sydney, Australia">
-                </div>
+          <!-- Recurring Invoice Checkbox -->
+          <div class="mb-4">
+            <div class="form-check">
+              <input
+                class="form-check-input checkbox-custom"
+                type="checkbox"
+                id="recurringInvoice"
+                checked
+              />
+              <label class="form-check-label text-white" for="recurringInvoice">
+                This is a recurring invoice (Monthly)
+              </label>
+            </div>
+          </div>
 
-                <!-- Recurring Invoice Checkbox -->
-                <div class="mb-4">
-                    <div class="form-check">
-                        <input class="form-check-input checkbox-custom" type="checkbox" id="recurringInvoice" checked>
-                        <label class="form-check-label text-white" for="recurringInvoice">
-                            This is a recurring invoice (Monthly)
-                        </label>
-                    </div>
-                </div>
+          <!-- Invoice Items Section -->
+          <div class="mb-4">
+            <h6 class="fw-bold mb-3 text-white">Invoice Items</h6>
 
-                <!-- Invoice Items Section -->
-                        <div class="mb-4">
-                        <h6 class="fw-bold mb-3 text-white">Invoice Items</h6>
+            <!-- Item Headers -->
+            <div class="row text-muted small mb-2">
+              <div class="col-4">Item</div>
+              <div class="col-2 text-center">Price</div>
+              <div class="col-2 text-center">Qty</div>
+              <div class="col-3 text-end">Total Price</div>
+              <div class="col-1"></div>
+            </div>
 
-                        <!-- Item Headers -->
-                        <div class="row text-muted small mb-2">
-                            <div class="col-4">Item</div>
-                            <div class="col-2 text-center">Price</div>
-                            <div class="col-2 text-center">Qty</div>
-                            <div class="col-3 text-end">Total Price</div>
-                            <div class="col-1"></div>
-                        </div>
-
-                        <!-- Items container -->
-                        <div id="invoice-items">
-                            <!-- existing item rows here -->
-                            <div class="invoice-item-row">
-                            <div class="row align-items-center">
-                                <div class="col-4">
-                                <input type="text" class="form-control border-0 bg-transparent p-0 fw-medium text-white" value="Legal Advising">
-                                </div>
-                                <div class="col-2">
-                                <input type="number" class="form-control border-0 bg-transparent p-0 text-center text-white" value="500">
-                                </div>
-                                <div class="col-2">
-                                <input type="number" class="form-control border-0 bg-transparent p-0 text-center text-white" value="2">
-                                </div>
-                                <div class="col-3 text-end fw-bold text-white">1000</div>
-                                <div class="col-1 text-end">
-                                <button type="button" class="btn btn-link p-0 text-muted">
-                                    <i class="bi bi-three-dots-vertical"></i>
-                                </button>
-                                </div>
-                            </div>
-                            </div>
-
-    <!-- Invoice Item 2 -->
-                    <div class="invoice-item-row">
-                        <div class="row align-items-center">
-                            <div class="col-4">
-                                <input type="text" class="form-control border-0 bg-transparent p-0 fw-medium text-white" value="Expert Consulting">
-                            </div>
-                            <div class="col-2">
-                                <input type="number" class="form-control border-0 bg-transparent p-0 text-center text-white" value="400">
-                            </div>
-                            <div class="col-2">
-                                <input type="number" class="form-control border-0 bg-transparent p-0 text-center text-white" value="1">
-                            </div>
-                            <div class="col-3 text-end fw-bold text-white">400</div>
-                            <div class="col-1 text-end">
-                                <button type="button" class="btn btn-link p-0 text-muted">
-                                    <i class="bi bi-three-dots-vertical"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-
-                    <!-- Add Item Button -->
-                    <button type="button" class="btn btn-link text-primary p-0 text-decoration-none mb-3" onclick="addItem()">
-                        <i class="bi bi-plus-circle me-2"></i>Add Item
+            <!-- Items container -->
+            <div id="invoice-items">
+              <!-- existing item rows here -->
+              <div class="invoice-item-row">
+                <div class="row align-items-center">
+                  <div class="col-4">
+                    <input
+                      type="text"
+                      class="form-control border-0 bg-transparent p-0 fw-medium text-white"
+                      value="Legal Advising"
+                    />
+                  </div>
+                  <div class="col-2">
+                    <input
+                      type="number"
+                      class="form-control border-0 bg-transparent p-0 text-center text-white"
+                      value="500"
+                    />
+                  </div>
+                  <div class="col-2">
+                    <input
+                      type="number"
+                      class="form-control border-0 bg-transparent p-0 text-center text-white"
+                      value="2"
+                    />
+                  </div>
+                  <div class="col-3 text-end fw-bold text-white">1000</div>
+                  <div class="col-1 text-end">
+                    <button type="button" class="btn btn-link p-0 text-muted">
+                      <i class="bi bi-three-dots-vertical"></i>
                     </button>
-
-                    <!-- Total Section -->
-                    <div class="total-section">
-                        <div class="text-muted mb-1">Total Amount</div>
-                        <div class="h4 fw-bold text-success mb-0">$1400</div>
-                    </div>
-                    </div>
-
-                <!-- Additional Notes -->
-                <div class="mb-4">
-                    <label class="form-label text-muted mb-2">Additional Notes</label>
-                    <textarea class="form-control" rows="3" placeholder="Some additional notes for the client.">Some additional notes for the client.</textarea>
+                  </div>
                 </div>
+              </div>
 
-                <!-- Action Buttons -->
-                <div class="d-flex gap-2 mb-4">
-                    <button type="button" class="btn btn-link text-primary p-2 text-decoration-none">
-                        PREVIEW
+              <!-- Invoice Item 2 -->
+              <div class="invoice-item-row">
+                <div class="row align-items-center">
+                  <div class="col-4">
+                    <input
+                      type="text"
+                      class="form-control border-0 bg-transparent p-0 fw-medium text-white"
+                      value="Expert Consulting"
+                    />
+                  </div>
+                  <div class="col-2">
+                    <input
+                      type="number"
+                      class="form-control border-0 bg-transparent p-0 text-center text-white"
+                      value="400"
+                    />
+                  </div>
+                  <div class="col-2">
+                    <input
+                      type="number"
+                      class="form-control border-0 bg-transparent p-0 text-center text-white"
+                      value="1"
+                    />
+                  </div>
+                  <div class="col-3 text-end fw-bold text-white">400</div>
+                  <div class="col-1 text-end">
+                    <button type="button" class="btn btn-link p-0 text-muted">
+                      <i class="bi bi-three-dots-vertical"></i>
                     </button>
-                    <button type="button" class="btn btn-outline-secondary flex-fill">
-                        Save as Draft
-                    </button>
-                    <button type="button" class="btn btn-primary flex-fill">
-                        Send
-                    </button>
+                  </div>
                 </div>
-            </form>
-        </div>
+              </div>
+            </div>
+
+            <!-- Add Item Button -->
+            <button
+              type="button"
+              class="btn btn-link text-primary p-0 text-decoration-none mb-3"
+              onclick="addItem()"
+            >
+              <i class="bi bi-plus-circle me-2"></i>Add Item
+            </button>
+
+            <!-- Total Section -->
+            <div class="total-section">
+              <div class="text-muted mb-1">Total Amount</div>
+              <div class="h4 fw-bold text-success mb-0">$1400</div>
+            </div>
+          </div>
+
+          <!-- Additional Notes -->
+          <div class="mb-4">
+            <label class="form-label text-muted mb-2">Additional Notes</label>
+            <textarea
+              class="form-control"
+              rows="3"
+              placeholder="Some additional notes for the client."
+            >Some additional notes for the client.</textarea
+            >
+          </div>
+
+        </form>
+      </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
-        function addItem() {
-            const container = document.getElementById('invoice-items');
-            const newItem = document.createElement('div');
-            newItem.className = 'invoice-item-row';
-            newItem.innerHTML = `
+
+      const linkToCopy = "https://example.com/invoice/12345";
+      document.getElementById("copyLinkBtn").addEventListener("click", () => {
+        navigator.clipboard
+          .writeText(linkToCopy)
+          .then(() => {
+            Swal.fire({
+              icon: "success",
+              title: "Copied!",
+              text: "Link copied to clipboard successfully.",
+              timer: 1500,
+              showConfirmButton: false,
+            });
+          })
+          .catch((err) => {
+            Swal.fire({
+              icon: "error",
+              title: "Copy failed",
+              text: "An error occurred while copying the link.",
+            });
+            console.error(err);
+          });
+      });
+      function addItem() {
+        const container = document.getElementById("invoice-items");
+        const newItem = document.createElement("div");
+        newItem.className = "invoice-item-row";
+        newItem.innerHTML = `
                 <div class="row align-items-center">
                 <div class="col-4">
                     <input type="text" class="form-control border-0 bg-transparent p-0 fw-medium text-white" placeholder="Item">
@@ -389,8 +476,8 @@
                 </div>
                 </div>
             `;
-            container.appendChild(newItem);
-        }
+        container.appendChild(newItem);
+      }
     </script>
-</body>
+  </body>
 </html>

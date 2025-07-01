@@ -37,7 +37,7 @@
     }
 
     .mobile-container {
-      max-width: 400px !important;
+      max-width: 430px !important;
       margin: 20px auto;
       background: #000000;
       min-height: calc(100vh - 40px);
@@ -60,7 +60,6 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.03"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
       pointer-events: none;
     }
 
@@ -93,7 +92,7 @@
     }
 
     .menu-btn {
-      background: rgba(255, 255, 255, 0.1);
+      background: black;
       border: none;
       border-radius: 12px;
       padding: 8px 12px;
@@ -103,14 +102,12 @@
     }
 
     .menu-btn:hover {
-      background: rgba(255, 255, 255, 0.2);
       transform: translateY(-1px);
     }
 
     .dropdown-menu {
       border: none;
       border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
       padding: 8px;
       margin-top: 8px;
       background-color: #1a1a1a;
@@ -133,7 +130,7 @@
 
     .content-area {
       padding: 24px 20px;
-      background: linear-gradient(180deg, #000000 0%, #111111 100%);
+      background: #1E1E1E;
     }
 
     .stats-summary {
@@ -159,7 +156,7 @@
     }
 
     .stat-label {
-      font-size: 0.50rem;
+      font-size: 0.70rem;
       color: #888;
       font-weight: 500;
       text-transform: uppercase;
@@ -184,8 +181,8 @@
       position: relative;
       background: var(--card-bg);
       border-radius: 16px;
-      padding: 25px;
-      margin-bottom: 5px;
+      padding: 13px;
+      margin-bottom: 15px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       border: 1px solid #333;
       cursor: pointer;
@@ -201,7 +198,7 @@
       z-index: 1;
       padding: 4px 8px;
       border-radius: 6px;
-      font-size: 0.65rem !important;
+      font-size: 0.60rem !important;
     }
 
     .invoice-card::before {
@@ -229,18 +226,18 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 12px;
+      margin-bottom: 6px;
     }
 
     .client-name {
       font-weight: 600;
-      font-size: 1.1rem;
+      font-size: 0.95rem;
       color: #ffffff;
       margin-bottom: 4px;
     }
 
     .invoice-date {
-      font-size: 0.85rem;
+      font-size: 0.60rem;
       color: #888;
       font-weight: 500;
     }
@@ -253,13 +250,13 @@
 
     .invoice-number {
       font-family: 'Courier New', monospace;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: white;
       font-weight: 500;
     }
 
     .invoice-amount {
-      font-size: 0.90rem;
+      font-size: 0.85rem;
       font-weight: 700;
       color: #ffffff;
     }
@@ -359,44 +356,19 @@
       }
       
       .stats-summary {
-        grid-template-columns: 1fr;
-        gap: 8px;
-      }
-      
-      .stat-card {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        text-align: left;
-      }
+    grid-template-columns: repeat(3, 1fr);
+    }
+
     }
   </style>
 </head>
 <body>
   <div class="mobile-container ">
-    <!-- Header -->
-    <div class="text-white p-3 d-flex justify-content-between align-items-center">
-  
-  <div class="d-flex align-items-center">
-    <img src="/Images/MujeerLogo.png" alt="Logo" style="height: 60px;" class="me-2">
-  </div>
-
-  <!-- Dropdown menu -->
-  <div class="dropdown-container">
-    <div class="dropdown">
-      <button class="menu-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Menu">
-        <i class="bi bi-list fs-5"></i>
-      </button>
-      <ul class="dropdown-menu dropdown-menu-end">
-        <li><a class="dropdown-item" href="/Client/invoicesList.html"><i class="bi bi-list-ul"></i> Invoices List</a></li>
-        <li><a class="dropdown-item" href="/Client/addVoucher.html"><i class="bi bi-plus-circle"></i> Create New Invoice</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
+    
 
     <!-- Content Area -->
     <div class="content-area">
+      
       <!-- Stats Summary -->
       <div class="stats-summary">
         <div class="stat-card">
@@ -412,6 +384,13 @@
           <div class="stat-label">Cancelled</div>
         </div>
       </div>
+
+      <div class="d-flex justify-content-end mb-3">
+  <a href="addVoucher.html" class="btn btn-sm text-white" style="background: linear-gradient(135deg, #C8910E 0%, #A67C00 100%); border-radius: 12px; font-weight: 500;">
+    <i class="bi bi-plus-circle me-1"></i> New Invoice
+  </a>
+</div>
+
 
       <!-- Section Title -->
       <div class="section-title">
@@ -429,7 +408,7 @@
       </div>
 
       <!-- Invoice Cards -->
-      <div class="invoice-card paid" onclick="location.href='index.html';">
+      <div class="invoice-card paid" onclick="location.href='invoiceDetails.php';">
         <div class="invoice-header">
           <div>
             <div class="client-name">Nasir Uddin</div>
@@ -446,7 +425,7 @@
         </div>
       </div>
 
-      <div class="invoice-card pending" onclick="location.href='index.html';">
+      <div class="invoice-card pending" onclick="location.href='invoiceDetails.php';">
         <div class="invoice-header">
           <div>
             <div class="client-name">Sarah Ali</div>
@@ -463,7 +442,7 @@
         </div>
       </div>
 
-      <div class="invoice-card cancelled" onclick="location.href='index.html';">
+      <div class="invoice-card cancelled" onclick="location.href='invoiceDetails.php';">
         <div class="invoice-header">
           <div>
             <div class="client-name">Mohamed Saleh</div>
@@ -480,7 +459,7 @@
         </div>
       </div>
 
-      <div class="invoice-card paid" onclick="location.href='index.html';">
+      <div class="invoice-card paid" onclick="location.href='invoiceDetails.php';">
         <div class="invoice-header">
           <div>
             <div class="client-name">Layla Hassan</div>
@@ -497,7 +476,7 @@
         </div>
       </div>
 
-      <div class="invoice-card pending" onclick="location.href='index.html';">
+      <div class="invoice-card pending" onclick="location.href='invoiceDetails.php';">
         <div class="invoice-header">
           <div>
             <div class="client-name">Omar Khaled</div>
@@ -514,7 +493,7 @@
         </div>
       </div>
 
-      <div class="invoice-card paid" onclick="location.href='index.html';">
+      <div class="invoice-card paid" onclick="location.href='invoiceDetails.php';">
         <div class="invoice-header">
           <div>
             <div class="client-name">Fatima Noor</div>
@@ -531,7 +510,7 @@
         </div>
       </div>
 
-      <div class="invoice-card cancelled" onclick="location.href='index.html';">
+      <div class="invoice-card cancelled" onclick="location.href='invoiceDetails.php';">
         <div class="invoice-header">
           <div>
             <div class="client-name">Yousef Sami</div>
@@ -548,7 +527,7 @@
         </div>
       </div>
 
-      <div class="invoice-card paid" onclick="location.href='index.html';">
+      <div class="invoice-card paid" onclick="location.href='invoiceDetails.php';">
         <div class="invoice-header">
           <div>
             <div class="client-name">Hana Ahmed</div>
@@ -565,7 +544,7 @@
         </div>
       </div>
 
-      <div class="invoice-card pending" onclick="location.href='index.html';">
+      <div class="invoice-card pending" onclick="location.href='invoiceDetails.php';">
         <div class="invoice-header">
           <div>
             <div class="client-name">Khaled Zain</div>
@@ -582,7 +561,7 @@
         </div>
       </div>
 
-      <div class="invoice-card paid" onclick="location.href='index.html';">
+      <div class="invoice-card paid" onclick="location.href='invoiceDetails.php';">
         <div class="invoice-header">
           <div>
             <div class="client-name">Mona Saleh</div>
@@ -601,10 +580,6 @@
     </div>
   </div>
 
-  <!-- Scroll Indicator -->
-  <div class="scroll-indicator">
-    <div class="scroll-progress" style="height: 0%"></div>
-  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
